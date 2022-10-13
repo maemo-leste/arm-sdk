@@ -59,38 +59,38 @@ postbuild() {
 
     notice "executing $device_name postbuild"
 
-    notice "building u-boot"
-	mkdir -p $R/dist/u-boot
-	pushd $R/extra/u-boot
-		for board in $uboot_configs; do
-			notice "building u-boot for $board"
-
-			make distclean
-			make \
-				$MAKEOPTS \
-				ARCH=arm \
-				CROSS_COMPILE=$compiler \
-					"$board" || { zerr; return 1; }
-			make \
-				$MAKEOPTS \
-				ARCH=arm \
-				CROSS_COMPILE=$compiler || { zerr; return 1; }
-
-			mv -v u-boot-sunxi-with-spl.bin $R/dist/u-boot/${board}.bin
-		done
-    popd
-
-    notice "creating boot.cmd"
-    cat <<EOF | sudo tee ${strapdir}/boot/boot.cmd
-setenv bootargs console=ttyS0,115200 root=/dev/mmcblk0p2 rootwait panic=10 \${extra}
-load mmc 0:1 0x43000000 dtbs/\${fdtfile} || load mmc 0:1 0x43000000 boot/dtbs/\${fdtfile}
-load mmc 0:1 0x42000000 zImage || load mmc 0:1 0x42000000 boot/zImage
-bootz 0x42000000 - 0x43000000
-EOF
-
-    notice "creating u-boot script image"
-    sudo mkimage -A arm -T script -C none \
-		-d $strapdir/boot/boot.cmd $strapdir/boot/boot.scr || { zerr; return 1; }
+#    notice "building u-boot"
+#	mkdir -p $R/dist/u-boot
+#	pushd $R/extra/u-boot
+#		for board in $uboot_configs; do
+#			notice "building u-boot for $board"
+#
+#			make distclean
+#			make \
+#				$MAKEOPTS \
+#				ARCH=arm \
+#				CROSS_COMPILE=$compiler \
+#					"$board" || { zerr; return 1; }
+#			make \
+#				$MAKEOPTS \
+#				ARCH=arm \
+#				CROSS_COMPILE=$compiler || { zerr; return 1; }
+#
+#			mv -v u-boot-sunxi-with-spl.bin $R/dist/u-boot/${board}.bin
+#		done
+#    popd
+#
+#    notice "creating boot.cmd"
+#    cat <<EOF | sudo tee ${strapdir}/boot/boot.cmd
+#setenv bootargs console=ttyS0,115200 root=/dev/mmcblk0p2 rootwait panic=10 \${extra}
+#load mmc 0:1 0x43000000 dtbs/\${fdtfile} || load mmc 0:1 0x43000000 boot/dtbs/\${fdtfile}
+#load mmc 0:1 0x42000000 zImage || load mmc 0:1 0x42000000 boot/zImage
+#bootz 0x42000000 - 0x43000000
+#EOF
+#
+#    notice "creating u-boot script image"
+#    sudo mkimage -A arm -T script -C none \
+#		-d $strapdir/boot/boot.cmd $strapdir/boot/boot.scr || { zerr; return 1; }
 
     postbuild-clean
 }
