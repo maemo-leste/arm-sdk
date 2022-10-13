@@ -136,6 +136,11 @@ EOF
 
 	cat <<EOF | sudo tee ${strapdir}/postbuild >/dev/null
 #!/bin/sh
+# XXX: LESTE HACK:
+# # We normally use our local resolver, but we don't have it in chroot, set it
+# here, it should be set on actual boot
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
 apt-get update
 apt-get --yes --force-yes upgrade
 apt-get --yes --force-yes autoremove
