@@ -24,7 +24,7 @@ arrs+=(custmodules)
 
 device_name="n900"
 arch="armhf"
-size=1891
+size=3000
 inittab=("T0:23:respawn:/sbin/getty -L ttyS2 115200 vt100")
 
 parted_type="dos"

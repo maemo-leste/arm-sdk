@@ -24,7 +24,7 @@ arrs+=(custmodules)
 
 device_name="raspi3"
 arch="arm64"
-size=1891
+size=3000
 inittab=("T0:23:respawn:/sbin/agetty -L ttyAMA0 115200 vt100")
 
 parted_type="dos"

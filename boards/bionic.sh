@@ -24,7 +24,7 @@ arrs+=(custmodules)
 
 device_name="bionic"
 arch="armhf"
-size=1891
+size=3000
 inittab=("s0:12345:respawn:/sbin/agetty -L ttyS2 115200 vt100")
 
 parted_type="dos"
