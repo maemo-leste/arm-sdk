@@ -86,6 +86,7 @@ load() {
 		"pinetab"                   "$R/boards/pinetab.sh"
 		"sunxi"                     "$R/boards/sunxi.sh"
 		"turbox-twister"            "$R/boards/turbox-twister.sh"
+		"arm64-generic"             "$R/boards/arm64-generic.sh"
 	)
 
 	os_map=(
