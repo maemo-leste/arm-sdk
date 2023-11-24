@@ -1,0 +1,5 @@
+## <file system>  <mount point> <type> <options>              <dump><pass>
+## bootfs
+/dev/mmcblk0p1    /boot         {{{BOOTFS}}}    defaults                0    1
+# eMMC swap
+/dev/mmcblk1p3    none          swap            sw                      0    0
