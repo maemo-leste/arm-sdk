@@ -63,6 +63,7 @@ postbuild() {
 				return 1
 			}
 
+		mkdir -p "$R/dist/"
 		mv -v u-boot.img "$R/dist/n900-u-boot.img"
 	popd
 }
