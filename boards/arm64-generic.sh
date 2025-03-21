@@ -23,7 +23,7 @@ vars+=(device_name arch size parted_type parted_boot parted_root bootfs inittab)
 
 device_name="arm64-generic"
 arch="arm64"
-size=3000
+size=4000
 inittab=("T1:12345:respawn:/sbin/agetty -L ttyS0 115200 vt100")
 
 parted_type="dos"
