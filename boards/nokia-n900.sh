@@ -47,6 +47,14 @@ postbuild() {
 
 	copy-root-overlay
 
+	# After /etc/fstab is overwritten, run our leste-config-n900 postinstall
+	# again
+	cat <<EOF | sudo tee ${strapdir}/n900
+#!/bin/sh
+dpkg-reconfigure leste-config-n900
+EOF
+	chroot-script -d n900 || zerr
+
 	notice "building u-boot"
 	pushd "$R/extra/u-boot"
 		make distclean
