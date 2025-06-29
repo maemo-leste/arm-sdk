@@ -1,6 +1,6 @@
 [submodule "lib/libdevuansdk"]
 	path = lib/libdevuansdk
-	url = https://github.com/MerlijnWajer/libdevuansdk
+	url = https://git.maemo.org/leste/libdevuansdk
 [submodule "extra/u-boot"]
 	path = extra/u-boot
 	url = https://gitlab.denx.de/u-boot/u-boot
