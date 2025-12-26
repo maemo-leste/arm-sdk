@@ -36,7 +36,7 @@ armhf_qemu_bin="/usr/bin/qemu-arm-static"
 arm64_qemu_bin="/usr/bin/qemu-aarch64-static"
 
 # extra_packages for all images
-extra_packages+=(fake-hwclock busybox-static ntp)
+extra_packages+=(fake-hwclock busybox-static ntpsec)
 extra_packages+=(pciutils usbutils)
 purge_packages+=()
 
